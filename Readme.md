@@ -52,13 +52,24 @@ Es werden zwei Regressionsmodelle trainiert und verglichen:
 *   **Hist Gradient Boosting Regressor:** $R^2 \approx 0,62$ | $\text{MAE} \approx 0,73$ Mana
 *   **Random Forest Regressor:** $R^2 \approx 0,57$ | $\text{MAE} \approx 0,77$ Mana
 
-### Wichtigste Feature Importances
+### Visualisierungen & Grafiken
 
-Die Analyse über das Modul `src/analyzer.py` zeigt, welche Merkmale die stärkste Auswirkung auf die Manakosten-Vorhersage haben:
+#### 1. Modellvergleich ($R^2$, MAE, RMSE)
+![Modellvergleich](models/plots/model_comparison.png)
+
+#### 2. Wichtigste Feature Importances
+Die Analyse zeigt, welche Merkmale die stärkste Auswirkung auf die Manakosten-Vorhersage haben:
+![Feature Importances](models/plots/random_forest_feature_importance.png)
 
 *   **Kampfwerte:** `power` und `toughness` dominieren die Baum-Entscheidungen bei Kreaturen (Angriffsstärke ist dabei ca. dreimal so stark gewichtet wie Widerstandskraft).
 *   **Textumfang:** `text_length` und `max_number_in_text` dienen als starke Indikatoren für die Komplexität und Skalierung eines Effekts.
 *   **Schlüsselwörter und Mechaniken:** Begriffe wie *target*, *targets*, *flying*, *control* und `is_artifact` bilden die wichtigsten regelbezogenen Signale.
+
+#### 3. Tatsächliche vs. Vorhergesagte Manakosten (CMC)
+![Actual vs Predicted](models/plots/hist_gradient_boosting_actual_vs_predicted.png)
+
+#### 4. Fehlerverteilung (Residuen)
+![Residuals Distribution](models/plots/hist_gradient_boosting_residuals.png)
 
 ---
 

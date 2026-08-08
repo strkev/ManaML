@@ -4,8 +4,9 @@ import numpy as np
 import pandas as pd
 from src.features import FEATURE_COLS
 from src.data_loader import load_processed_dataframe
+from src.plots import plot_feature_importance
 
-def analyze_feature_importance(model, vectorizer, top_n=20):
+def analyze_feature_importance(model, vectorizer, top_n=20, model_name="hist_gradient_boosting"):
     if not hasattr(model, "feature_importances_"):
         print(f"\nModel '{type(model).__name__}'  does not support feature_importances_.")
         return None
@@ -28,6 +29,7 @@ def analyze_feature_importance(model, vectorizer, top_n=20):
         pct = row['importance'] * 100
         print(f"{idx+1:2d}. {row['feature']:25s}")
         
+    plot_feature_importance(model, vectorizer, top_n=top_n, model_name=model_name)
     return df_importances
 
 

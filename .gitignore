@@ -9,10 +9,12 @@ data/all-cards.jsonl
 data/processed/
 *.npy
 
-# Models (Keep lightweight pre-trained hist_gradient_boosting model)
+# Models
 models/*
 !models/hist_gradient_boosting/
 !models/hist_gradient_boosting/*
+!models/plots/
+!models/plots/*
 *.pkl
 !models/hist_gradient_boosting/*.pkl
 

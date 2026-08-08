@@ -2,6 +2,7 @@ import os
 import joblib
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from src.plots import plot_actual_vs_predicted, plot_residual_distribution
 
 def evaluate_and_save(model, vectorizer, X_test, y_test_log, model_name="model", save_dir="models"):
     y_pred_log = model.predict(X_test)
@@ -24,5 +25,8 @@ def evaluate_and_save(model, vectorizer, X_test, y_test_log, model_name="model",
     joblib.dump(model, os.path.join(output_path, "mtg_cmc_model.pkl"))
     joblib.dump(vectorizer, os.path.join(output_path, "mtg_vectorizer.pkl"))
     print(f"Artefacts saved under '{output_path}/'")
+
+    plot_actual_vs_predicted(y_test, y_pred, model_name=model_name.replace("_", " ").title())
+    plot_residual_distribution(y_test, y_pred, model_name=model_name.replace("_", " ").title())
 
     return {"mae": mae, "rmse": rmse, "r2": r2}

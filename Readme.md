@@ -71,6 +71,15 @@ Die Analyse zeigt, welche Merkmale die stärkste Auswirkung auf die Manakosten-V
 #### 4. Fehlerverteilung (Residuen)
 ![Residuals Distribution](models/plots/hist_gradient_boosting_residuals.png)
 
+Die Abweichungen ($Predicted - Actual$) sind in der Glockenkurve nahezu perfekt um den Nullpunkt zentriert. Das zeigt, dass das Modell frei von systematischem Bias ist und Karten weder pauschal zu teuer noch zu günstig einschätzt.
+
+---
+
+## Ausblick & Mögliche Erweiterungen
+
+*   **Tiefere Fehler- & Feature-Analyse:** Systematische Auswertung der größten Ausreißer aus dem analyzer.py script im Zusammenspiel mit den Top-Feature-Importances. Ziel hierbei ist es, gezielt zu identifizieren, welche Mechanismen oder unberücksichtigten Merkmale bei spezifischen Karten zu starken Fehlprognosen führen.
+*   **Fortgeschrittenes NLP & Sentiment-Analyse:** Ersetzung bzw. Ergänzung von TF-IDF durch moderne Language-Modelle und Transformer (z. B. BART, BERT oder LLM-Embeddings) zur tieferen semantischen Erfassung und Analyse der Oracle-Texte.
+
 ---
 
 ## Setup und Installation
